@@ -24,7 +24,7 @@ const Footer = () => {
     <div>
       <div style={phantomStyle} />
       <div style={footerStyle}>
-          <span>Kunut Chirdchai <a className="App-link" href="http://cs.kmutnb.ac.th/">CS@KMUTNB</a></span>
+          <span>BENYA PRASERTSIRISIT<a className="App-link" href="http://cs.kmutnb.ac.th/">CS@KMUTNB</a></span>
       </div>
     </div>
   );

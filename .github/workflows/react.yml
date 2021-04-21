@@ -24,10 +24,6 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-      shell: cmd
+    - run: npm ci
     - run: npm test
-      shell: cmd
-    - run: npm run build
-      shell: cmd
-
+    - run: npm run build    
