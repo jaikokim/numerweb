@@ -14,6 +14,7 @@ const NewtonRaphsonAPI = require('./api/NewtonRaphsonAPI')
 const CramerAPI = require('./api/CramerAPI')
 const GaussElimAPI = require('./api/GaussElimAPI')
 const GaussJordanAPI = require('./api/GaussJordanAPI')
+const ConjugateGradientAPI = require('./api/ConjugateGradientAPI')
 
 app.use('/',BisectionAPI);
 app.use('/',FalsePosAPI);
@@ -23,6 +24,7 @@ app.use('/',NewtonRaphsonAPI);
 app.use('/',CramerAPI);
 app.use('/',GaussElimAPI);
 app.use('/',GaussJordanAPI);
+app.use('/',ConjugateGradientAPI);
 app.listen(port, () => console.log("Backend server live on " + port));
   
 

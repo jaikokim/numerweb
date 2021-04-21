@@ -24,11 +24,7 @@ const Footer = () => {
     <div>
       <div style={phantomStyle} />
       <div style={footerStyle}>
-<<<<<<< HEAD
           <span>BENYA PRASERTSIRISIT<a className="App-link" href="http://cs.kmutnb.ac.th/">CS@KMUTNB</a></span>
-=======
-          <span>Kunut Chirdchai <a className="App-link" href="http://cs.kmutnb.ac.th/">CS@KMUTNB</a></span>
->>>>>>> 2ffbe89113d425462826858c8f82d8f551d791e5
       </div>
     </div>
   );

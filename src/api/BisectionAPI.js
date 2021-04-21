@@ -10,24 +10,24 @@ router.post('/api/BisectionAPI', (req, res) => {
   var xm = 0;
   var n = 0;
   var check = parseFloat(0.000000);
-  var tmpArr = [];
+  var tmpArr = []; //keepArrayชั่วคราว
 
   const findxm = (xl, xr) => {
-    return (parseFloat(xl) + parseFloat(xr)) / 2
+    return (parseFloat(xl) + parseFloat(xr)) / 2 
   }
 
   do {
-    let XL = {
-      x: xl
+    let XL = {  //component keepxl iteration
+      x: xl //resetaluefromiteration
     };
     let XR = {
       x: xr
     };
 
-    xm = findxm(xl, xr);
-    n++;
-    if (eq.evaluate(XL) * eq.evaluate(XR) > 0) {
-      check = Math.abs((xm - xl) / xm).toFixed(8);
+    xm = findxm(xl, xr); 
+    n++; //iterationup++
+    if (eq.evaluate(XL) * eq.evaluate(XR) > 0) { //evalutateคำนวณสมการ
+      check = Math.abs((xm - xl) / xm).toFixed(8); 
       xl = xm;
     } else {
       check = Math.abs((xm - xr) / xm).toFixed(8);
@@ -35,14 +35,14 @@ router.post('/api/BisectionAPI', (req, res) => {
     }
 
     tmpArr.push({
-      'iteration': n,
+      'iteration': n,//header value 
       'xl': xl,
       'xr': xr,
       'xm': xm,
       'Error': check,
     });
 
-  } while (check > 0.000001 && n < 25)
+  } while (check > 0.000001 && n < 25) //checkvaluepai++
 
   res.json({
     tmpArr: tmpArr
