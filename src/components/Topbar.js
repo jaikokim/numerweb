@@ -41,7 +41,11 @@ const Topbar = () => {
                         <DropdownItem header>Methods</DropdownItem>
                         <DropdownItem href="/CramersRule" >Cramer's Rule</DropdownItem>
                         <DropdownItem href="/GaussElimination" >Gauss Elimination</DropdownItem>
+<<<<<<< HEAD
                         <DropdownItem href="/GaussJordan" >Gauss-Jordan Elimination</DropdownItem>
+=======
+                        <DropdownItem href="/Bisection" >Gauss-Jordan Elimination</DropdownItem>
+>>>>>>> 2ffbe89113d425462826858c8f82d8f551d791e5
                         <DropdownItem href="/Bisection" >Conjugate Gradient</DropdownItem>
                         <DropdownItem href="/Bisection" >Cholesky Decomposition</DropdownItem>
                         <DropdownItem href="/Bisection" >LU Decomposition</DropdownItem>
