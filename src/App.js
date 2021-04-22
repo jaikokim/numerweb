@@ -22,6 +22,7 @@ import CramersRule from './components/LinearAlgebra/CramersRule';
 import GaussElimination from './components/LinearAlgebra/GaussElimination';
 import GaussJordan from './components/LinearAlgebra/GaussJordan';
 import ConjugateGradient from './components/LinearAlgebra/ConjugateGradient';
+import Cholesky from './components/LinearAlgebra/Cholesky';
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
           <Route exact path="/GaussElimination" component={GaussElimination} />
           <Route exact path="/GaussJordan" component={GaussJordan} />
           <Route exact path="/ConjugateGradient" component={ConjugateGradient} />
+          <Route exact path="/Cholesky" component={Cholesky} />
         </BrowserRouter>
         </div>
       </div>

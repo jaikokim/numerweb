@@ -4,7 +4,6 @@ import Footer from './Footer';
 import '../App.css';
 import logo from '../logo.svg';
 
-
 const Home = () => {
     
     document.body.style.overflow = 'hidden';

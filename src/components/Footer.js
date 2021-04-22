@@ -1,6 +1,6 @@
 import React from "react";
 const footerStyle = {
-  backgroundColor: "#370883",
+  backgroundColor: "#9999FF",
   fontSize: "20px",
   color: "white",
   borderTop: "1px solid #E7E7E7",
@@ -24,7 +24,7 @@ const Footer = () => {
     <div>
       <div style={phantomStyle} />
       <div style={footerStyle}>
-          <span>BENYA PRASERTSIRISIT<a className="App-link" href="http://cs.kmutnb.ac.th/">CS@KMUTNB</a></span>
+          <span>BENYA PRASERTSIRISIT</span>
       </div>
     </div>
   );
