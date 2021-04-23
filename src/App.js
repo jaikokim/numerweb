@@ -24,7 +24,8 @@ import GaussJordan from './components/LinearAlgebra/GaussJordan';
 import ConjugateGradient from './components/LinearAlgebra/ConjugateGradient';
 import Cholesky from './components/LinearAlgebra/Cholesky';
 import LUDecompose from './components/LinearAlgebra/LUDecompose';
-
+import GaussSeidel from './components/LinearAlgebra/GaussSeidel';
+import Jacobi from './components/LinearAlgebra/Jacobi';
 class App extends Component {
 
   render() {
@@ -44,6 +45,8 @@ class App extends Component {
           <Route exact path="/ConjugateGradient" component={ConjugateGradient} />
           <Route exact path="/Cholesky" component={Cholesky} />
           <Route exact path="/LUDecompose" component={LUDecompose} />
+          <Route exact path="/GaussSeidel" component={GaussSeidel} />
+          <Route exact path="/Jacobi" component={Jacobi} />
         </BrowserRouter>
         </div>
       </div>

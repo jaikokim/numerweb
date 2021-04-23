@@ -19,7 +19,8 @@ const GaussJordanAPI = require('./api/GaussJordanAPI')
 const ConjugateGradientAPI = require('./api/ConjugateGradientAPI')
 const CholeskyAPI = require('./api/CholeskyAPI')
 const LUDecomposeAPI = require('./api/LUDecomposeAPI')
-
+const JacobiAPI = require('./api/JacobiAPI')
+const GaussSeidelAPI = require('./api/GaussSeidelAPI')
 app.use('/',BisectionAPI);
 app.use('/',FalsePosAPI);
 app.use('/',OnePointAPI);
@@ -31,6 +32,8 @@ app.use('/',GaussJordanAPI);
 app.use('/',ConjugateGradientAPI);
 app.use('/',CholeskyAPI);
 app.use('/',LUDecomposeAPI);
+app.use('/',GaussSeidelAPI);
+app.use('/',JacobiAPI);
 const swaggerOptions = {
     swaggerDefinition: {
         
