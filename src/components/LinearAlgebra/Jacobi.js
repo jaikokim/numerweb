@@ -55,7 +55,7 @@ export default function Jacobi() {
       matrixX: matrixX,
     })
       .then((res) => {
-        setBtnState(true);
+        setBtnState(false);
         setOutput(res.data.out);
         console.log(res.data.out);
       })

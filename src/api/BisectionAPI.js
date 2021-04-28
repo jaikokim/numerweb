@@ -71,14 +71,14 @@ router.post('/api/BisectionAPI', (req, res) => {
     tmpArr.push({
       'iteration': n,//header value 
       'xl': xl,
-      'xr': xr,
+      'xr': xr, 
       'xm': xm,
       'Error': check,
     });
 
   } while (check > 0.000001 && n < 25) //checkvaluepai++
   
-  console.log(eq.evaluate({x:xm}));
+  console.log(eq.evaluate({x:xm})); //
 
   res.json({ //ส่งค่าระหว่างapi
     tmpArr: tmpArr
