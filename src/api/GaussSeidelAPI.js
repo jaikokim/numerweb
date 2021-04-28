@@ -5,7 +5,7 @@ const math = require("mathjs");
 router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixA = req.body.matrixA;
   var MatrixB = [].concat(...req.body.matrixB);
-  var matrixX = [].concat(...req.body.matrixX);
+  var MatrixX = [].concat(...req.body.matrixX);
   var solution = [];
   var n = MatrixA.length;
 
