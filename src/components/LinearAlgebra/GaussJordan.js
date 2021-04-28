@@ -45,7 +45,7 @@ export default function GaussJordan() {
       matrixB: matrixB,
     })
       .then((res) => {
-        setBtnState(true);
+       // setBtnState(true);
         setOutput(res.data.out);
       })
       .catch((err) => {

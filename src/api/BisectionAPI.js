@@ -1,4 +1,5 @@
 const express = require('express');
+const { evaluate, log } = require('mathjs');
 const router = express.Router();
 const math = require('mathjs');
 /**
@@ -76,8 +77,10 @@ router.post('/api/BisectionAPI', (req, res) => {
     });
 
   } while (check > 0.000001 && n < 25) //checkvaluepai++
+  
+  console.log(eq.evaluate({x:xm}));
 
-  res.json({
+  res.json({ //ส่งค่าระหว่างapi
     tmpArr: tmpArr
 
   })
