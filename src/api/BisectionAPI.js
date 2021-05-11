@@ -1,13 +1,12 @@
-const express = require('express');
-const { evaluate, log } = require('mathjs');
+const express = require("express");
 const router = express.Router();
-const math = require('mathjs');
+const math = require("mathjs");
 /**
  * @swagger
  *  tags:
  *   name: Bisection
  *   description: Get all books
- * 
+ *
  */
 
 /**
@@ -20,7 +19,7 @@ const math = require('mathjs');
  *         description: GET
  */
 
- /**
+/**
  * @swagger
  * /api/BisectionAPI:
  *   post:
@@ -34,56 +33,42 @@ const math = require('mathjs');
  *         description: post data
  */
 
- 
-router.post('/api/BisectionAPI', (req, res) => {
-
-  
+router.post("/api/BisectionAPI", (req, res) => {
   var eq = math.compile(req.body.equation);
   var xl = parseFloat(req.body.xl);
   var xr = parseFloat(req.body.xr);
   var xm = 0;
   var n = 0;
-  var check = parseFloat(0.000000);
-  var tmpArr = []; //keepArrayชั่วคราว
+  var check;
+  var tmpArr = [];
 
   const findxm = (xl, xr) => {
-    return (parseFloat(xl) + parseFloat(xr)) / 2 
-  }
+    return (parseFloat(xl) + parseFloat(xr)) / 2;
+  };
 
   do {
-    let XL = {  //component keepxl iteration
-      x: xl //resetaluefromiteration
-    };
-    let XR = {
-      x: xr
-    };
-
-    xm = findxm(xl, xr); 
-    n++; //iterationup++
-    if (eq.evaluate(XL) * eq.evaluate(XR) > 0) { //evalutateคำนวณสมการ
-      check = Math.abs((xm - xl) / xm).toFixed(8); 
-      xl = xm;
-    } else {
-      check = Math.abs((xm - xr) / xm).toFixed(8);
-      xr = xm;
-    }
+    xm = findxm(xl, xr);
+    n++;
 
     tmpArr.push({
-      'iteration': n,//header value 
-      'xl': xl,
-      'xr': xr, 
-      'xm': xm,
-      'Error': check,
+      iteration: n,
+      xl: xl,
+      xr: xr,
+      xm: xm,
+      Error: check,
     });
 
-  } while (check > 0.000001 && n < 25) //checkvaluepai++
-  
-  console.log(eq.evaluate({x:xm})); //
+    if (eq.evaluate({x:xm}) > 0) {
+      check = Math.abs((xm - xr) / xm).toFixed(8);
+      xr = xm;
+    } else {
+      check = Math.abs((xm - xl) / xm).toFixed(8);
+      xl = xm;
+    }
+  } while (check > 0.000001 && n < 25);
 
-  res.json({ //ส่งค่าระหว่างapi
-    tmpArr: tmpArr
-
-  })
+  res.json({
+    tmpArr: tmpArr,
+  });
 });
 module.exports = router;
-

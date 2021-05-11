@@ -13,7 +13,7 @@ router.post("/api/GaussSeidelAPI", (req, res) => {
   var xold;
   epsilon = new Array(n);
   do {
-    xold = JSON.parse(JSON.stringify(x));
+    xold = x;
     for (var i = 0; i < n; i++) {
       var sum = 0;
       for (var j = 0; j < n; j++) {
@@ -35,7 +35,7 @@ router.post("/api/GaussSeidelAPI", (req, res) => {
       epsilon[i] = Math.abs((xnew[i] - xold[i]) / xnew[i]);
     }
     for (i = 0; i < epsilon.length; i++) {
-      if (epsilon[i] > 0.000001) {
+      if (epsilon[i] > 0.00000001) {
         return true;
       }
     }
@@ -43,7 +43,7 @@ router.post("/api/GaussSeidelAPI", (req, res) => {
   }
 
   console.log(solution);
-
+  console.log(math.multiply(MatrixA, solution));
   res.json({
     out: solution,
   });
