@@ -42,7 +42,7 @@ export default function NewtonDivided() {
 
   const initialPoint = (i, event) => {
     let copy = [...interpolatePoint];
-    copy[i] = +event.target.value;
+    copy[i] = +event.target.value - 1;
     setinterpolatePoint(copy);
   };
 
@@ -56,6 +56,7 @@ export default function NewtonDivided() {
       yValue: yValue,
       interpolatePoint: interpolatePoint,
       FindX: FindX,
+      pointCount: pointCount,
     })
       .then((res) => {
         setOutput(res.data.out);
@@ -95,19 +96,19 @@ export default function NewtonDivided() {
                       <div className="form-row">
                         <div className="form-group col-4">
                           <label>
-                            X<sub>{i+1}</sub> =
+                            X<sub>{i + 1}</sub> =
                           </label>
                           <input
-                            type="number"
+                            type="number" step="any"
                             onChange={(e) => initialX(i, e)}
                           />
                         </div>
                         <div className="form-group col-4">
                           <label>
-                            F(x<sub>{i+1}</sub>) =
+                            F(x<sub>{i + 1}</sub>) =
                           </label>
                           <input
-                            type="number"
+                            type="number" step="any"
                             onChange={(e) => initialY(i, e)}
                           />
                         </div>
@@ -126,22 +127,20 @@ export default function NewtonDivided() {
                 </label>
                 <p></p>
                 <label>
-              Enter Interpolate Points :<span>&nbsp;&nbsp;</span>
-              <input
-                type="text"
-                value={pointCount}
-                onChange={(e) => setpointCount(e.target.value)}
-              />
-              </label>
+                  Enter Interpolate Points :<span>&nbsp;&nbsp;</span>
+                  <input
+                    type="text"
+                    value={pointCount}
+                    onChange={(e) => setpointCount(e.target.value)}
+                  />
+                </label>
 
-              {generate_interpoint().map((i) => (
+                {generate_interpoint().map((i) => (
                   <div key={i} className="list-group list-group-flush">
                     <div className="list-group-item">
                       <div className="form-row">
                         <div className="form-group col-4">
-                          <label>
-                            Interpolate Point {i+1} =
-                          </label>
+                          <label>Interpolate Point {i + 1} =</label>
                           <input
                             type="number"
                             onChange={(e) => initialPoint(i, e)}
@@ -160,7 +159,6 @@ export default function NewtonDivided() {
             ) : null}
           </div>
           <p></p>
-
           <h2>Output</h2>
           F(x) = {output}
         </Container>
