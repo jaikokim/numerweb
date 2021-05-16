@@ -7,10 +7,12 @@ import {
 } from 'react-bootstrap';
 import {
   Table
-} from 'antd';
+} from 'antd'; //
 import Axios from 'axios';
 
-
+//C:\numer\src\components\RootOfEquation
+//.อยู่ในไฟล์เดียวกัน
+//C:\numer\src
 import '../../App.css';
 import Topbar from '../Topbar';
 import Footer from '../Footer';
@@ -75,17 +77,17 @@ export default function Bisection() {
     document.title = "Bisection Method ";
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e) => { //โยนค่าใส่ฟังก์ชันตัวแปร
     if (btnState === 0) {
       e.preventDefault();
-      bisection();
+      bisection(); //ฟังก์ชัน
     }
   };
 
   const bisection = () => {
 
     Axios
-      .post("http://localhost:5000/api/BisectionAPI", {
+      .post("http://localhost:5000/api/BisectionAPI", { //เรียกไฟล์APIมาใช้
         xl: parseFloat(xl),
         xr: parseFloat(xr),
         equation: equation,
@@ -98,6 +100,7 @@ export default function Bisection() {
       .catch(err => {
         console.log(err);
       });
+      
   }
 
   return (

@@ -21,7 +21,6 @@ import NewtonRaphson from './components/RootOfEquation/NewtonRaphson';
 import CramersRule from './components/LinearAlgebra/CramersRule';
 import GaussElimination from './components/LinearAlgebra/GaussElimination';
 import GaussJordan from './components/LinearAlgebra/GaussJordan';
-import ConjugateGradient from './components/LinearAlgebra/ConjugateGradient';
 import Cholesky from './components/LinearAlgebra/Cholesky';
 import LUDecompose from './components/LinearAlgebra/LUDecompose';
 import GaussSeidel from './components/LinearAlgebra/GaussSeidel';
@@ -44,7 +43,6 @@ class App extends Component {
           <Route exact path="/CramersRule" component={CramersRule} />
           <Route exact path="/GaussElimination" component={GaussElimination} />
           <Route exact path="/GaussJordan" component={GaussJordan} />
-          <Route exact path="/ConjugateGradient" component={ConjugateGradient} />
           <Route exact path="/Cholesky" component={Cholesky} />
           <Route exact path="/LUDecompose" component={LUDecompose} />
           <Route exact path="/GaussSeidel" component={GaussSeidel} />

@@ -8,7 +8,7 @@ import Footer from "../Footer";
 
 export default function GaussJordan() {
   const topic = "Gauss Jordan Elimination";
-  const [btnState, setBtnState] = useState(false);
+  const [btnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))

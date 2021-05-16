@@ -6,7 +6,7 @@ router.post("/api/NewtonInterpolation", (req, res) => {
   var x = [].concat(...req.body.xValue);
   var y = [].concat(...req.body.yValue);
 
-  var Point = [].concat(...req.body.interpolatePoint);
+  var Point = [].concat(...req.body.interpolatePoint);  
   var n = Point.length;
 
   function C(i) {
@@ -50,7 +50,7 @@ router.post("/api/NewtonInterpolation", (req, res) => {
     }
   }
 
-  fx = y[Point[0]];
+  fx = y[Point[0]]; 
 
   if (n == 2) {
     fx += C(1) * (X - x[Point[0]]);
