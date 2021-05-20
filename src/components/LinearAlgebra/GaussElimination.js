@@ -8,7 +8,6 @@ import Footer from "../Footer";
 
 export default function GaussElimination() {
   const topic = "Gauss Elimination";
-  const [btnState, setBtnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))
@@ -33,19 +32,14 @@ export default function GaussElimination() {
     setMatrixB(copy);
   };
 
-  const handleSubmit = (e) => {
-    if (btnState === false) {
-      e.preventDefault();
-      gauss_elimination();
-    }
-  };
+ 
   const gauss_elimination = () => {
     Axios.post("http://localhost:5000/api/GaussElimAPI", {
       matrixA: matrixA,
       matrixB: matrixB,
     })
       .then((res) => {
-        setBtnState(true);
+        
         setOutput(res.data.out);
       })
       .catch((err) => {
@@ -76,7 +70,7 @@ export default function GaussElimination() {
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                           
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -99,7 +93,7 @@ export default function GaussElimination() {
                           <tr key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                             
                               onChange={(e) =>
                                 initialB(rowIndex, columnIndex, e)
                               }
@@ -114,7 +108,7 @@ export default function GaussElimination() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" disabled={btnState} onClick={handleSubmit}>
+          <button value="Submit"  onClick={gauss_elimination}>
             Find the Solution
           </button>
 

@@ -34,7 +34,7 @@ class App extends Component {
       <div>
         <div>
         <BrowserRouter>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home} /> 
           <Route exact path="/Bisection" component={Bisection} />
           <Route exact path="/FalsePos" component={FalsePos} />
           <Route exact path="/OnePoint" component={OnePoint} />

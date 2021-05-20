@@ -8,7 +8,6 @@ import Footer from "../Footer";
 
 export default function GaussSeidel() {
   const topic = "Gauss Seidel";
-  const [btnState, setBtnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))
@@ -42,12 +41,6 @@ export default function GaussSeidel() {
     setMatrixX(copy);
   };
 
-  const handleSubmit = (e) => {
-    if (btnState === false) {
-      e.preventDefault();
-      gauss_seidel();
-    }
-  };
   const gauss_seidel = () => {
     Axios.post("http://localhost:5000/api/GaussSeidelAPI", {
       matrixA: matrixA,
@@ -55,7 +48,6 @@ export default function GaussSeidel() {
       matrixX: matrixX,
     })
       .then((res) => {
-        setBtnState(false);
         setOutput(res.data.out);
         console.log(res.data.out);
       })
@@ -87,7 +79,7 @@ export default function GaussSeidel() {
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                              
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -110,7 +102,7 @@ export default function GaussSeidel() {
                           <tr key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                            
                               onChange={(e) =>
                                 initialB(rowIndex, columnIndex, e)
                               }
@@ -133,7 +125,7 @@ export default function GaussSeidel() {
                       <tr key={columnIndex}>
                         <input
                           type="number"
-                          disabled={btnState}
+                          
                           onChange={(e) => initialX(rowIndex, columnIndex, e)}
                         />
                       </tr>
@@ -144,7 +136,7 @@ export default function GaussSeidel() {
             </table>
           </div>
           <p></p>
-          <button value="Submit" disabled={btnState} onClick={handleSubmit}>
+          <button value="Submit"  onClick={  gauss_seidel}>
             Find the Solution
           </button>
 

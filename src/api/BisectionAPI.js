@@ -1,6 +1,6 @@
 const express = require("express");
-const router = express.Router();
-const math = require("mathjs");
+const router = express.Router(); //ตัวให้เส้นทาง
+const math = require("mathjs"); //import library
 /**
  * @swagger
  *  tags:
@@ -34,13 +34,13 @@ const math = require("mathjs");
  */
 
 router.post("/api/BisectionAPI", (req, res) => {
-  var eq = math.compile(req.body.equation);
-  var xl = parseFloat(req.body.xl);
+  var eq = math.compile(req.body.equation); //แปลงสมการ เพื่อใช้สำหรับการคำนวณ ตัวสมการรันได้ comoileมาจากmath.js
+  var xl = parseFloat(req.body.xl);  //แปลงให้เป็นทศนิยม
   var xr = parseFloat(req.body.xr);
   var xm = 0;
   var n = 0;
-  var check;
-  var tmpArr = [];
+  var check; //เก็บค่าerror
+  var tmpArr = []; //โยนค่ากลับในหน้าweb
 
   const findxm = (xl, xr) => {
     return (parseFloat(xl) + parseFloat(xr)) / 2;

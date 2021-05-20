@@ -7,7 +7,7 @@ app.use(cors());
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
-const port = process.env.PORT || 5000;
+const port = 5000; //ตัวแปรport5000
 
 const BisectionAPI = require("./api/BisectionAPI");
 const FalsePosAPI = require("./api/FalsePosAPI");
@@ -22,7 +22,7 @@ const LUDecomposeAPI = require("./api/LUDecomposeAPI");
 const GaussSeidelAPI = require("./api/GaussSeidelAPI");
 const JacobiAPI = require("./api/JacobiAPI");
 const NewtonInterpolationAPI = require("./api/NewtonInterpolation");
-app.use("/", BisectionAPI);
+app.use("/", BisectionAPI); //สร้างpath
 app.use("/", FalsePosAPI);
 app.use("/", OnePointAPI);
 app.use("/", SecantAPI);
@@ -57,7 +57,7 @@ const swaggerOptions = {
 
 
 
-app.listen(port, () => console.log("Backend server live on " + port));
+app.listen(port, () => console.log("Backend server live on " + port)); //serverดักจับ
 
 
 module.exports = app;

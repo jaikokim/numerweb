@@ -24,13 +24,13 @@ const header = [{
     return <p> Iteration </p>;
   },
   dataIndex: 'iteration',
-  key: 'iteration',
+  key: 'iteration', //ตัวที่เราไว้เรียง
   align: 'center',
 
 
 }, {
   title: () => {
-    return <p> X <sub> L </sub></p> ;
+    return <p> X <sub> L </sub></p> ; 
   },
   dataIndex: 'xl',
   align: 'center',
@@ -68,7 +68,8 @@ export default function Bisection() {
 
 
 
-  const [equation, setEquation] = useState("x^3 - x - 3");
+  const [equation, setEquation] = useState("x^3 - x - 3"); //เป็นsetstateผูกค่าsetequation(seter)
+ // โดยusetateเปลี่ยค่าinputที่รับเข้ามา ค่ารับมาจากevent
   const [btnState, setBtnState] = useState(0);
   let [xl, setXL] = useState(1);
   let [xr, setXR] = useState(2);
@@ -77,9 +78,9 @@ export default function Bisection() {
     document.title = "Bisection Method ";
   }, []);
 
-  const handleSubmit = (e) => { //โยนค่าใส่ฟังก์ชันตัวแปร
+  const handleSubmit = (e) => { 
     if (btnState === 0) {
-      e.preventDefault();
+      e.preventDefault(); //ระงับการทำงานdefualtของเว็บ คือrefresheไม่ให้รันตลอดพื่อไม่ให้มันทำงานบางอย่างที่เราไม่ต้องการ เพราะreactทำงานหน้าเดียว 
       bisection(); //ฟังก์ชัน
     }
   };
@@ -87,7 +88,7 @@ export default function Bisection() {
   const bisection = () => {
 
     Axios
-      .post("http://localhost:5000/api/BisectionAPI", { //เรียกไฟล์APIมาใช้
+      .post("http://localhost:5000/api/BisectionAPI", { 
         xl: parseFloat(xl),
         xr: parseFloat(xr),
         equation: equation,
@@ -95,7 +96,8 @@ export default function Bisection() {
       .then(res => {
         console.log(res.data.tmpArr);
         newArr = res.data.tmpArr;
-        setBtnState(1);
+        setBtnState(1); 
+        console.log(newArr);
       })
       .catch(err => {
         console.log(err);
@@ -118,15 +120,15 @@ export default function Bisection() {
               <form onSubmit={handleSubmit}>
                   <label>
                     Equation :<span>&nbsp;&nbsp;</span>
-                    <input disabled={btnState} type="text" value={equation} onChange={e => setEquation(e.target.value)}
+                    <input disabled={btnState} type="text" value={equation} onChange={e => {setEquation(e.target.value);console.log(e)}}
                     />
                   </label>
                   <p></p>
                   <label>
-                    X<sub>L</sub> :<span>&nbsp;&nbsp;</span>
+                    X<sub>L</sub> :<span>&nbsp;&nbsp;</span> 
                     <input disabled={btnState} type="text" value={xl} onChange={e => setXL(e.target.value)}
                     />
-                  </label>
+                  </label> 
                   <p></p>
                   <label>
                     X<sub>R</sub> :<span>&nbsp;&nbsp;</span>
@@ -135,8 +137,8 @@ export default function Bisection() {
                   <p></p>
 
                   {btnState === 0  ? 
-                  <button type="submit" disabled={btnState} value="Submit">Submit</button> :
-                  <button type="submit" disabled={!btnState} value="Submit">Reset</button> }
+                  <button type="submit"  >Submit</button> : 
+                  <button type="submit" >Reset</button> }
                 </form>
                 <p></p><p></p>
             <div>
@@ -150,6 +152,6 @@ export default function Bisection() {
   );
 }
 
-
+//e->event เก็บสถานะทุกอย่าง
 
 

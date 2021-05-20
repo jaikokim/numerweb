@@ -8,7 +8,6 @@ import Footer from "../Footer";
 
 export default function LUDecompose() {
   const topic = "LU Decomposition";
-  const [btnState, setBtnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))
@@ -33,19 +32,13 @@ export default function LUDecompose() {
     setMatrixB(copy);
   };
 
-  const handleSubmit = (e) => {
-    if (btnState === false) {
-      e.preventDefault();
-      lu_decompose();
-    }
-  };
+
   const lu_decompose = () => {
     Axios.post("http://localhost:5000/api/LUDecomposeAPI", {
       matrixA: matrixA,
       matrixB: matrixB,
     })
       .then((res) => {
-        setBtnState(true);
         setOutput(res.data.out);
       })
       .catch((err) => {
@@ -76,7 +69,7 @@ export default function LUDecompose() {
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                              
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -99,7 +92,7 @@ export default function LUDecompose() {
                           <tr key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
+                            
                               onChange={(e) =>
                                 initialB(rowIndex, columnIndex, e)
                               }
@@ -114,7 +107,7 @@ export default function LUDecompose() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" disabled={btnState} onClick={handleSubmit}>
+          <button value="Submit"  onClick={lu_decompose}>
             Find the Solution
           </button>
 
