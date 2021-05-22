@@ -70,16 +70,15 @@ export default function GaussSeidel() {
           <div>
             <Row>
               <Col xs="7">
-                X Matrix
+                A Matrix
                 <table>
                   <tbody>
-                    {matrixA.map((row, rowIndex) => (
+                    {matrixA.map((row, rowIndex) => (  
                       <tr key={rowIndex}>
                         {row.map((column, columnIndex) => (
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -93,7 +92,7 @@ export default function GaussSeidel() {
               </Col>
 
               <Col xs="5">
-                Y Matrix
+                B Matrix
                 <table>
                   <tbody>
                     {matrixB.map((row, rowIndex) => (
@@ -136,7 +135,7 @@ export default function GaussSeidel() {
             </table>
           </div>
           <p></p>
-          <button value="Submit"  onClick={  gauss_seidel}>
+          <button   onClick={  gauss_seidel}>
             Find the Solution
           </button>
 

@@ -7,38 +7,70 @@ router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixB = [].concat(...req.body.matrixB);
   var MatrixX = [].concat(...req.body.matrixX);
   var solution = [];
+  var temp  = [];
+  var tempB;
   var n = MatrixA.length;
-
-  x = new Array(n);
+  var checkM = -1;
   var xold;
   epsilon = new Array(n);
+  for(var i = 0;i<n;i++){
+    if(MatrixA[i][i]==0){
+        checkM = i;
+    }
+  }
+  if(checkM > -1)
+  {
+    for(var j = 0 ; j < n ; j++)
+    {
+      if(checkM < n-1)
+      {
+        temp[j] = MatrixA[checkM]
+        MatrixA[checkM] = MatrixA[checkM+1];
+        MatrixA[checkM+1] = temp[j];
+        tempB = MatrixB[checkM];
+        MatrixB[checkM] = MatrixB[checkM+1];
+        MatrixB[checkM+1] = tempB;
+
+
+      }
+      else
+      {
+        temp[j] = MatrixA[checkM];
+        MatrixA[checkM] = MatrixA[checkM-1];
+        MatrixA[checkM-1] = temp[j];
+        tempB=MatrixB[checkM];
+        MatrixB[checkM]=MatrixB[checkM-1];
+        MatrixB[checkM-1]=tempB;
+      }
+    }
+    console.log(MatrixA);
+    console.log(MatrixB);
+  }
   do {
-    xold = x;
+    xold = MatrixX;
     for (var i = 0; i < n; i++) {
       var sum = 0;
       for (var j = 0; j < n; j++) {
         if (i !== j) {
-          //else i == j That is a divide number
           sum = sum + MatrixA[i][j] * MatrixX[j];
         }
       }
-      x[i] = (MatrixB[i] - sum) / MatrixA[i][i]; //update x[i]
+      MatrixX[i] = (MatrixB[i] - sum) / MatrixA[i][i];
     }
-  } while (error(x, xold)); //if true , continue next iteration
+  } while (error(MatrixX, xold));
 
-  for (i = 0; i < x.length; i++) {
-    solution.push(x[i]);
+  for (i = 0; i < MatrixX.length; i++) {
+    solution.push(MatrixX[i]);
   }
 
   function error(xnew, xold) {
     for (var i = 0; i < xnew.length; i++) {
       epsilon[i] = Math.abs((xnew[i] - xold[i]) / xnew[i]);
     }
-    for (i = 0; i < epsilon.length; i++) {
-      if (epsilon[i] > 0.00000001) {
+   
+      if (epsilon[0] > 0.000000001 && epsilon[1] > 0.000000001 && epsilon[2] > 0.000000001) {
         return true;
       }
-    }
     return false;
   }
 

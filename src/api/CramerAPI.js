@@ -83,7 +83,7 @@ router.post("/api/CramerAPI", (req, res) => {
     });
   }
 
-
+console.log(math.multiply(MatrixA,result))
   
   res.json({
     out: result,
